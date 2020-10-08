@@ -3,6 +3,7 @@ package com.refridginator.app.viewmodels;
 import android.annotation.SuppressLint;
 import android.util.Log;
 
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -12,15 +13,13 @@ import com.refridginator.app.data.FridgeItemRepository;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import io.reactivex.Observable;
 
 public class StorageViewModel extends ViewModel {
     private FridgeItemRepository fridgeItemRepository;
     private static final String TAG = "StorageViewModel";
 
-    @Inject
+    @ViewModelInject
     public StorageViewModel(FridgeItemRepository fridgeItemRepository) {
         this.fridgeItemRepository = fridgeItemRepository;
     }

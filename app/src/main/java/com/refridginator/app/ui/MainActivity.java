@@ -9,36 +9,24 @@ import android.util.Log;
 
 
 import com.refridginator.app.R;
-import com.refridginator.app.di.DaggerAppComponent;
-import com.refridginator.app.di.RoomModule;
 import com.refridginator.app.data.FridgeItem;
 import com.refridginator.app.viewmodels.StorageViewModel;
-import com.refridginator.app.viewmodels.ViewModelProviderFactory;
 
-import javax.inject.Inject;
-
+import dagger.hilt.android.AndroidEntryPoint;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.schedulers.Schedulers;
 
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
-    @Inject
-    ViewModelProviderFactory viewModelProviderFactory;
-
     private StorageViewModel storageViewModel;
-
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
-
     private static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DaggerAppComponent.builder()
-                .roomModule(new RoomModule(getApplication()))
-                .build()
-                .inject(this);
 
-        storageViewModel = new ViewModelProvider(this, viewModelProviderFactory).get(StorageViewModel.class);
+        storageViewModel = new ViewModelProvider(this).get(StorageViewModel.class);
 
         FridgeItem fridgeItem = new FridgeItem();
         fridgeItem.setId((long) 6);

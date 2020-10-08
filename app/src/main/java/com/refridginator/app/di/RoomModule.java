@@ -11,20 +11,17 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import dagger.hilt.InstallIn;
+import dagger.hilt.android.components.ApplicationComponent;
 
 @Module
+@InstallIn(ApplicationComponent.class)
 public class RoomModule {
-
-    private AppDatabase appDatabase;
-
-    public RoomModule(Application application) {
-        appDatabase = Room.databaseBuilder(application, AppDatabase.class, "test").build();
-    }
 
     @Singleton
     @Provides
-    AppDatabase providesAppDatabase() {
-        return appDatabase;
+    AppDatabase providesAppDatabase(Application application) {
+        return Room.databaseBuilder(application, AppDatabase.class, "test").build();
     }
 
     @Singleton
