@@ -9,6 +9,55 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".OpenFridge"
+            android:label="Open Sesame"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.refridginator.app.MainActivity"
+            />
+
+        </activity>
+        <activity
+            android:name=".Storage"
+            android:label="What is in your fridge"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.refridginator.app.MainActivity" />
+        </activity>
+        <activity
+            android:name=".RecipeRecs"
+            android:label="What to make"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.refridginator.app.MainActivity" />
+        </activity>
+        <activity
+            android:name=".FridgeStats"
+            android:label="How is your fridge"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.refridginator.app.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AddGrocery"
+            android:label="Make a List"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.refridginator.app.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AddFoodActivity"
+            android:label="Add Food"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.refridginator.app.MainActivity" />
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

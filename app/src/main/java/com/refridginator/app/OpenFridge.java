@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class FridgeStats extends AppCompatActivity {
+public class OpenFridge extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fridge_stats);
+        setContentView(R.layout.activity_open_fridge);
     }
 }

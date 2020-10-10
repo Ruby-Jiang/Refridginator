@@ -31,6 +31,7 @@
         <androidx.cardview.widget.CardView
             android:foreground="?android:selectableItemBackground"
             android:clickable="true"
+            android:onClick="launchAddFood"
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp">
@@ -42,6 +43,7 @@
 
                 <ImageView
                     android:id="@+id/addFood"
+                    android:onClick="launchAddFood"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/circlegreen"
@@ -67,6 +69,7 @@
                 <androidx.cardview.widget.CardView
                     android:foreground="?android:selectableItemBackground"
                     android:clickable="true"
+                    android:onClick="launchAddGrocery"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
                     android:layout_margin="10dp">
@@ -78,6 +81,7 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
+                            android:onClick="launchAddGrocery"
                             android:background="@drawable/circlegreen"
                             android:src="@drawable/ic_baseline_format_list_bulleted_24"
                             android:padding="10dp" />
@@ -111,6 +115,7 @@
         <androidx.cardview.widget.CardView
             android:foreground="?android:selectableItemBackground"
             android:clickable="true"
+            android:onClick="launchFridgeStats"
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp">
@@ -123,6 +128,7 @@
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
+                    android:onClick="launchFridgeStats"
                     android:background="@drawable/circlegreen"
                     android:padding="10dp"
                     android:src="@drawable/ic_baseline_info_24" />
@@ -146,6 +152,7 @@
         <androidx.cardview.widget.CardView
             android:foreground="?android:selectableItemBackground"
             android:clickable="true"
+            android:onClick="launchRecipeRecs"
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp">
@@ -158,6 +165,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/circlegreen"
+                    android:onClick="launchRecipeRecs"
                     android:src="@drawable/ic_baseline_menu_book_24"
                     android:padding="10dp" />
                 <TextView
@@ -190,6 +198,7 @@
         <androidx.cardview.widget.CardView
             android:foreground="?android:selectableItemBackground"
             android:clickable="true"
+            android:onClick="launchStorage"
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp">
@@ -204,6 +213,7 @@
                     android:layout_height="64dp"
                     android:background="@drawable/circlegreen"
                     android:padding="10dp"
+                    android:onClick="launchStorage"
                     android:src="@drawable/ic_baseline_sd_storage_24" />
 
                 <TextView
@@ -225,6 +235,7 @@
         <androidx.cardview.widget.CardView
             android:foreground="?android:selectableItemBackground"
             android:clickable="true"
+            android:onClick="launchOpen"
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp">
@@ -237,6 +248,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/circlegreen"
+                    android:onClick="launchOpen"
                     android:src="@drawable/ic_baseline_lock_open_24"
                     android:padding="10dp" />
                 <TextView
