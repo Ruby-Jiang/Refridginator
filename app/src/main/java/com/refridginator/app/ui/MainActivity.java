@@ -1,54 +1,50 @@
 package com.refridginator.app.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
-
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-
+import android.view.View;
+import android.widget.ImageView;
 
 import com.refridginator.app.R;
-import com.refridginator.app.data.FridgeItem;
-import com.refridginator.app.viewmodels.StorageViewModel;
 
-import dagger.hilt.android.AndroidEntryPoint;
-import io.reactivex.disposables.CompositeDisposable;
-
-@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
-    private StorageViewModel storageViewModel;
-    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private static final String TAG = "MainActivity";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        storageViewModel = new ViewModelProvider(this).get(StorageViewModel.class);
-
-        FridgeItem fridgeItem = new FridgeItem();
-        fridgeItem.setId((long) 6);
-//        storageViewModel.insert(fridgeItem);
-        storageViewModel.getAll().observe(this, f-> {
-            Log.i("getSize(): ", f.size()+"");
-        });
-
-
-        storageViewModel.searchByBarcode("5011038133450").subscribe(
-                r -> {
-                    Log.i(TAG, "onCreate: " + r.getProduct().getProductName());
-                },
-                e -> {
-                    Log.e(TAG, "onCreate: ", e);
-                }
-        );
+        ImageView image = findViewById(R.id.addFood);
+//        image.setOnClickListener(v -> {
+//            Intent intent = new Intent(this, AddFoodActivity.class);
+//
+//            startActivity(intent);
+//
+//        });
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        compositeDisposable.clear();
+    public void launchAddFood (View view){
+        Intent intent = new Intent(this, AddFoodActivity.class);
+        startActivity(intent);
+    }
+    public void launchAddGrocery (View view){
+        Intent intent = new Intent(this, AddGrocery.class);
+        startActivity(intent);
+    }
+    public void launchFridgeStats (View view){
+        Intent intent = new Intent(this, FridgeStats.class);
+        startActivity(intent);
+    }
+    public void launchRecipeRecs (View view){
+        Intent intent = new Intent(this, RecipeRecs.class);
+        startActivity(intent);
+    }
+    public void launchStorage (View view){
+        Intent intent = new Intent(this, Storage.class);
+        startActivity(intent);
+    }
+    public void launchOpen (View view){
+        Intent intent = new Intent(this, OpenFridge.class);
+        startActivity(intent);
     }
 }

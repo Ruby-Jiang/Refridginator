@@ -1,4 +1,4 @@
-package com.refridginator.app;
+package com.refridginator.app.ui;
 
 import android.app.Application;
 
