@@ -37,6 +37,15 @@ public class StorageViewModel extends ViewModel {
         });
     }
 
+    @SuppressLint("CheckResult")
+    public void delete(FridgeItem fridgeItem) {
+        fridgeItemRepository.delete(fridgeItem).subscribe(() -> {
+            Log.d(TAG, "delete: success");
+        }, error -> {
+            Log.e(TAG, "delete: failure", error);
+        });
+    }
+
     public Observable<OpenFoodFactsResponseModel> searchByBarcode(String barcode) {
         return fridgeItemRepository.searchByBarcode(barcode);
     }

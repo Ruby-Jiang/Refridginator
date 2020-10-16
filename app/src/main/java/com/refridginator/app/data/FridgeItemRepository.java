@@ -12,6 +12,7 @@ import javax.inject.Singleton;
 
 import io.reactivex.Completable;
 import io.reactivex.Observable;
+import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -33,6 +34,13 @@ public class FridgeItemRepository {
     public Completable insert(FridgeItem fridgeItem) {
         return fridgeItemDao
                 .insertAll(fridgeItem)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Completable delete(FridgeItem fridgeItem) {
+        return fridgeItemDao
+                .delete(fridgeItem)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
