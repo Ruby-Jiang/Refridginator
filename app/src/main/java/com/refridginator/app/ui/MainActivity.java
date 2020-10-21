@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -60,20 +61,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddGrocery.class);
         startActivity(intent);
     }
-    public void launchFridgeStats (View view){
-        Intent intent = new Intent(this, FridgeStats.class);
-        startActivity(intent);
-    }
     public void launchRecipeRecs (View view){
         Intent intent = new Intent(this, RecipeRecs.class);
         startActivity(intent);
     }
     public void launchStorage (View view){
         Intent intent = new Intent(this, Storage.class);
-        startActivity(intent);
-    }
-    public void launchOpen (View view){
-        Intent intent = new Intent(this, OpenFridge.class);
         startActivity(intent);
     }
 }
