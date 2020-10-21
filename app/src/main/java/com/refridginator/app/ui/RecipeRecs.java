@@ -1,8 +1,10 @@
-package com.refridginator.app;
+package com.refridginator.app.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.refridginator.app.R;
 
 public class RecipeRecs extends AppCompatActivity {
 
