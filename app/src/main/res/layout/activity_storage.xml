@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.refridginator.app.Storage">
+    tools:context="com.refridginator.app.ui.Storage">
     <TextView
         android:id="@+id/text_header"
         android:layout_width="wrap_content"
@@ -18,5 +18,28 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"  />
+
+    <ScrollView
+        android:layout_width="414dp"
+        android:layout_height="647dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TableLayout
+                android:id="@+id/storageTable"
+                android:layout_width="411dp"
+                android:layout_height="601dp"
+                android:layout_marginTop="90dp"
+                android:stretchColumns="*" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
