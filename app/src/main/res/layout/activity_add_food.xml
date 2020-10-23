@@ -4,19 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.refridginator.app.ui.AddFoodActivity">
+    tools:context=".ui.AddFoodActivity">
 
-    <TextView
-        android:id="@+id/text_header"
+    <Button
+        android:id="@+id/scanBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hey look you made it to the adding food part"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:textAppearance=
-            "@style/TextAppearance.AppCompat.Medium"
-        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="336dp"
+        android:layout_marginEnd="82dp"
+        android:layout_marginBottom="336dp"
+        android:text="Scan Product"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"  />
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
