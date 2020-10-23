@@ -58,4 +58,7 @@ dependencies {
     annotationProcessor "com.google.dagger:hilt-android-compiler:2.28-alpha"
     implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02'
     annotationProcessor 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
+
+    //From zxing-android-embedded version 4.x, only Android SDK 24+ is supported by default, and androidx is required.
+    implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
 }
