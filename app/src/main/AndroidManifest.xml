@@ -45,14 +45,6 @@
                 android:value="com.refridginator.app.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".ui.FridgeStats"
-            android:label="How is your fridge"
-            android:parentActivityName=".ui.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.refridginator.app.ui.MainActivity" />
-        </activity>
-        <activity
             android:name=".ui.AddGrocery"
             android:label="Make a List"
             android:parentActivityName=".ui.MainActivity">
