@@ -8,6 +8,8 @@
     <uses-feature android:name="android.hardware.camera.autofocus"/>
 
     <application
+        android:hardwareAccelerated="true"
+        android:configChanges="orientation" android:screenOrientation="landscape"
         android:name=".ui.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,7 +28,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.refridginator.app.ui.MainActivity"
             />
-
         </activity>
         <activity
             android:name=".ui.Storage"

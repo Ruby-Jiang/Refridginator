@@ -29,21 +29,21 @@ public class Storage extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(StorageViewModel.class);
         tableLayout = findViewById(R.id.storageTable);
 
-        // Test data
-        FridgeItem fridgeItem = new FridgeItem();
-        fridgeItem.setItemName("bread");
-        fridgeItem.setExpirationDate("2020-1-1");
-        viewModel.insert(fridgeItem);
-
-        fridgeItem = new FridgeItem();
-        fridgeItem.setItemName("milk");
-        fridgeItem.setExpirationDate("2020-1-2");
-        viewModel.insert(fridgeItem);
-
-        fridgeItem = new FridgeItem();
-        fridgeItem.setItemName("eggs");
-        fridgeItem.setExpirationDate("2020-1-2");
-        viewModel.insert(fridgeItem);
+//        // Test data
+//        FridgeItem fridgeItem = new FridgeItem();
+//        fridgeItem.setItemName("bread");
+//        fridgeItem.setExpirationDate("2020-1-1");
+//        viewModel.insert(fridgeItem);
+//
+//        fridgeItem = new FridgeItem();
+//        fridgeItem.setItemName("milk");
+//        fridgeItem.setExpirationDate("2020-1-2");
+//        viewModel.insert(fridgeItem);
+//
+//        fridgeItem = new FridgeItem();
+//        fridgeItem.setItemName("eggs");
+//        fridgeItem.setExpirationDate("2020-1-2");
+//        viewModel.insert(fridgeItem);
 
         viewModel.getAll().observe(this, this::onGetAll);
     }
