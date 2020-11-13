@@ -90,7 +90,13 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
                         String expirationDate = edtText1.getText().toString();
                         FridgeItem fridgeItem = new FridgeItem();
                         fridgeItem.setItemName(productName);
-                        fridgeItem.setExpirationDate("Best before " + expirationDate);
+                        if (expirationDate != null) fridgeItem.setExpirationDate("Best before " + expirationDate);
+                        else {
+                            Calendar calendar = Calendar.getInstance();
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            String date = dateFormat.format(calendar.getTime());
+                            fridgeItem.setExpirationDate("Added at " + date);
+                        }
                         viewModel.insert(fridgeItem);
                         scanCode();
                     }
@@ -119,7 +125,7 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null){
             if (result.getContents() != null){
-                viewModel.searchByBarcode("8008698007389").subscribe(new Observer<OpenFoodFactsResponseModel>() {
+                viewModel.searchByBarcode(result.getContents()).subscribe(new Observer<OpenFoodFactsResponseModel>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                     }
@@ -132,6 +138,8 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
 
                     @Override
                     public void onError(Throwable e) {
+                        EditText edtText = findViewById(R.id.plain_text_input);
+                        edtText.setText("product not found");
                     }
 
                     @Override
