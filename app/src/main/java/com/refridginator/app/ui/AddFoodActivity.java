@@ -150,7 +150,7 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
                 }).setNegativeButton("Abandon", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        scanCode();
+
                     }
                 });
                 AlertDialog dialog = builder.create();
