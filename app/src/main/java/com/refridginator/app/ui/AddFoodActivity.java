@@ -70,39 +70,47 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
                 showDatePickerDailog();
             }
         });
+        expirationDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    showDatePickerDailog();
+                }
+            }
+        });
         dialog = new AlertDialog.Builder(this)
-        .setTitle("Expiration Date Input")
-        .setView(expirationDialog)
-        .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                EditText edtText = findViewById(R.id.plain_text_input);
-                EditText edtText1 = findViewById(R.id.plain_text_input1);
-                String productName = edtText.getText().toString();
-                String expirationDate = edtText1.getText().toString();
-                FridgeItem fridgeItem = new FridgeItem();
-                fridgeItem.setItemName(productName);
-                fridgeItem.setExpirationDate("Best before " + expirationDate);
-                viewModel.insert(fridgeItem);
-                scanCode();
-            }
-        })
-        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                EditText edtText = findViewById(R.id.plain_text_input);
-                String productName = edtText.getText().toString();
-                FridgeItem fridgeItem = new FridgeItem();
-                fridgeItem.setItemName(productName);
-                Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String date = dateFormat.format(calendar.getTime());
-                fridgeItem.setExpirationDate("Added at " + date);
-                viewModel.insert(fridgeItem);
-                scanCode();
-            }
-        })
-        .show();
+                .setTitle("Expiration Date Input")
+                .setView(expirationDialog)
+                .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        EditText edtText = findViewById(R.id.plain_text_input);
+                        EditText edtText1 = findViewById(R.id.plain_text_input1);
+                        String productName = edtText.getText().toString();
+                        String expirationDate = edtText1.getText().toString();
+                        FridgeItem fridgeItem = new FridgeItem();
+                        fridgeItem.setItemName(productName);
+                        fridgeItem.setExpirationDate("Best before " + expirationDate);
+                        viewModel.insert(fridgeItem);
+                        scanCode();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        EditText edtText = findViewById(R.id.plain_text_input);
+                        String productName = edtText.getText().toString();
+                        FridgeItem fridgeItem = new FridgeItem();
+                        fridgeItem.setItemName(productName);
+                        Calendar calendar = Calendar.getInstance();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        String date = dateFormat.format(calendar.getTime());
+                        fridgeItem.setExpirationDate("Added at " + date);
+                        viewModel.insert(fridgeItem);
+                        scanCode();
+                    }
+                })
+                .show();
 
     }
 
@@ -171,6 +179,8 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         String date = year + "-" + month + "-" + dayOfMonth;
+        TextView expirationDateSet = findViewById(R.id.plain_text_input1);
+        expirationDateSet.setText(date);
         TextView messageView = dialog.findViewById(R.id.edit_expiration);
         messageView.setText(date);
     }
