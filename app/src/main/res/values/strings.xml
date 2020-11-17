@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Refridginator</string>
+    <string name="btn_add_text">AddItem</string>
+    <string name="et_1st">Write in your 1st item.</string>
 </resources>
