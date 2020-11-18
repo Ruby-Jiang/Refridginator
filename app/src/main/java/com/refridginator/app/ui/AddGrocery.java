@@ -4,6 +4,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.refridginator.app.R;
@@ -67,7 +70,19 @@ public class AddGrocery extends AppCompatActivity {
             }
         }
         EditText child = new EditText(this);
-        child.setBackgroundColor(0);
+        child.setFocusable(true);
+        child.setFocusableInTouchMode(true);
+        child.requestFocus();
+//        child.setBackgroundColor(Color.parseColor("#00ffff"));
+        child.setTextSize(25);
+        child.setPadding(10,0,0,10);
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) current_edittext.getLayoutParams();
+        params.setMargins(10,5,5,10);
+        child.setLayoutParams(params);
+        GradientDrawable drawable = new GradientDrawable();
+        drawable.setCornerRadius(20);
+        drawable.setColor(Color.parseColor("#00ffff"));
+        child.setBackground(drawable);
 //        child.setWidth();
         child.setSingleLine(true);
 //        child.setTextSize(20);
