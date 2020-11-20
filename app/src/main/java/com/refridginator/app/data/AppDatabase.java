@@ -3,7 +3,7 @@ package com.refridginator.app.data;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
-import com.refridginator.app.api.RecipeResponseModel;
+//import com.refridginator.app.api.RecipeResponseModel;
 
 import retrofit2.Call;
 
