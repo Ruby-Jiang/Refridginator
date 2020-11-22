@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -61,18 +64,44 @@ public class RecipeRecs extends AppCompatActivity {
             mRecipeList = new ArrayList<>();
             mRequestQueue = Volley.newRequestQueue(this);
             parseJSON();
+            EditText editText = findViewById(R.id.edit_recipes);
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    filter(s.toString());
+                }
+            });
+
+        }
+        private void filter(String text){
+        ArrayList<RecipeItem> filteredList = new ArrayList<>();
+        for(RecipeItem item : mRecipeList){
+            if (item.getURL().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+mRecipeAdapter.filterList(filteredList);
         }
 
     private void parseJSON() {
-        String url = "https://api.edamam.com/search?q=chicken&app_id=66e1ad0a&app_key=40b611f403c5665eb034a5bcafa94947";
+        String url = "https://api.edamam.com/search?q=healthy&app_id=66e1ad0a&app_key=40b611f403c5665eb034a5bcafa94947";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
                             JSONArray jsonArray = response.getJSONArray("hits");
-                            for(int i = 0; i < jsonArray.length()-1; i++){
+                            for(int i = 0; i < jsonArray.length(); i++){
                                 JSONObject innerObject = jsonArray.getJSONObject(i);
                                 JSONObject recipe = innerObject.getJSONObject("recipe");
 //                                RecipeItem recipeItem = new RecipeItem();

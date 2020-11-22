@@ -38,7 +38,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         String recipeTitle = currentItem.getTitle();
         String recipeURL = currentItem.getURL();
 
-        holder.mTextViewTitle.setText("Title: " + imageUrl);
+        holder.mTextViewTitle.setText(imageUrl);
         holder.mTextViewURL.setText("URL " + recipeURL);
         Picasso.get().load(recipeTitle).fit().centerInside().into(holder.mImageView);
 
@@ -48,6 +48,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public int getItemCount() {
 
         return mRecipeList.size();
+    }
+    public void filterList(ArrayList<RecipeItem> filteredList){
+        mRecipeList = filteredList;
+        notifyDataSetChanged();
+
     }
 
     public class RecipeViewHolder extends RecyclerView.ViewHolder {
