@@ -9,8 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
 import com.refridginator.app.R;
 
 import androidx.annotation.NonNull;
@@ -18,93 +23,84 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.refridginator.app.data.Item;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class GrolistAdapter extends RecyclerView.Adapter<GrolistAdapter.ItemHolder>{
+    private static final String TAG = "GrolistAdapter";
     private ArrayList<Item> items;
-//    private Item[] items;
-//    private int delimgsrc = R.drawable.trash;
-//    private int addquantitysrc = R.drawable.plus1;
     private Context context;
-    private BtnOnClickListerner btnDelListener;
+    private BtnOnClickListerner btnOnClickListener;
 
-    public void setBtnDelListener(BtnOnClickListerner btnDelListener) {
-        this.btnDelListener = btnDelListener;
+
+    //Constructor
+    public GrolistAdapter(Context context, ArrayList<Item> items) {
+        this.items = items;
+        this.context = context;
     }
 
-    public interface getItem{
-        String getItemIput(String iteminput);
+    //The getter of items.
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    //To setter of attribute "BtnOnClickListerner"
+    public void setBtnDelListener(BtnOnClickListerner btnDelListener) {
+        this.btnOnClickListener = btnDelListener;
     }
 
     public interface BtnOnClickListerner{
         void onDeleteClick(int postion);
         void onAddQuantityClick(int position);
     }
-    public GrolistAdapter(Context context, ArrayList<Item> items) {
-        this.items = items;
-        this.context = context;
-    }
 
-    public ArrayList<Item> getItems() {
-        return items;
-    }
-
+    //ViewHolder
     @NonNull
     @Override
     public GrolistAdapter.ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.item_row, parent, false);
-        return new ItemHolder(v, btnDelListener);
+        return new ItemHolder(v, btnOnClickListener);
     }
 
+    //onBindViewHolder
     @Override
     public void onBindViewHolder(@NonNull final ItemHolder holder, final int position){
         if (this.items.get(position) == null){return;}
-        holder.itename.setText(this.items.get(position).getName());
+//        holder.itename.setText(this.items.get(position).getName());
         holder.quantity.setText(this.items.get(position).getNumber()+"");
         holder.deletebutton.setImageResource(R.drawable.trash);
         holder.addquantity.setImageResource(R.drawable.plus1);
         holder.x.setText("X");
+//        showInputTips(holder.itename);
 
-        holder.itename.setFocusable(true);
+        if (holder.itename.getTag() instanceof TextWatcher){
+            holder.itename.removeTextChangedListener ((TextWatcher) holder.itename.getTag());
+        }
+        String current_itemname = this.items.get(position).getName();
+        holder.itename.setText(current_itemname);
         holder.itename.requestFocus();
-        holder.itename.addTextChangedListener(new TextWatcher() {
+        TextWatcher watcher = new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String ItemIput = s.toString();
-//                int index = holder.getAdapterPosition();
-////                if (items.get(index) == null){
-////                    items.set(index, new Item(ItemIput,1));
-////                    return;
-////                }
-//                Toast.makeText(context, index+"", Toast.LENGTH_LONG).show();
-//                items.add(index, new Item(ItemIput, Integer.parseInt((String) holder.quantity.getText())));
-//                items.set(holder.getAdapterPosition(), ItemIput);
-            }
-
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
             @Override
             public void afterTextChanged(Editable s) {
-                String ItemIput = s.toString();
-//                int index = holder.getAdapterPosition();
-////                if (items.get(index) == null){
-////                    items.set(index, new Item(ItemIput,1));
-////                    return;
-////                }
-//                Toast.makeText(context, index+"", Toast.LENGTH_LONG).show();
-//                items.add(index, new Item(ItemIput, Integer.parseInt((String) holder.quantity.getText())));
+                String trim = holder.itename.getText().toString().trim();
+                items.get(position).setName(trim);
             }
-        });
+        };
+        holder.itename.addTextChangedListener(watcher);
+        holder.itename.setTag(watcher);
     }
 
+    //return the length of the arraylist items
     @Override
     public int getItemCount() {
         return items.size();
     }
 
+    //Self defined ViewHolder
     public static class ItemHolder extends RecyclerView.ViewHolder{
         private static final String TAG = "ItemHolder";
         TextView itename;
@@ -138,6 +134,16 @@ public class GrolistAdapter extends RecyclerView.Adapter<GrolistAdapter.ItemHold
                 }
             });
         }
+    }
+
+
+    private void showInputTips(TextView et_text) {
+        et_text.setFocusable(true);
+        et_text.setFocusableInTouchMode(true);
+        et_text.requestFocus();
+        InputMethodManager inputManager =
+                (InputMethodManager) et_text.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.showSoftInput(et_text, 0);
     }
 
 }
