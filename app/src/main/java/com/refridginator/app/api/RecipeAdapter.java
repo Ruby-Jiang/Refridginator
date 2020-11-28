@@ -39,7 +39,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         String recipeURL = currentItem.getURL();
 
         holder.mTextViewTitle.setText(imageUrl);
-        holder.mTextViewURL.setText("URL " + recipeURL);
+        holder.mTextViewURL.setText("Link to Recipe: " + recipeURL);
         Picasso.get().load(recipeTitle).fit().centerInside().into(holder.mImageView);
 
     }

@@ -23,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Recipe Title"
+            android:textStyle="bold"
             android:textColor="@color/cardview_dark_background"
             android:textSize="20sp" />
         <TextView
@@ -30,6 +31,7 @@
             android:autoLink="web"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="url: "/>
+            android:text="url: "
+            android:textSize="15sp"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
