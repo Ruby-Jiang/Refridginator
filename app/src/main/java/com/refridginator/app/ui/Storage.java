@@ -6,7 +6,13 @@ import androidx.room.util.TableInfo;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -14,6 +20,8 @@ import android.widget.TextView;
 import com.refridginator.app.R;
 import com.refridginator.app.data.FridgeItem;
 import com.refridginator.app.viewmodels.StorageViewModel;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -31,21 +39,21 @@ public class Storage extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(StorageViewModel.class);
         tableLayout = findViewById(R.id.storageTable);
 
-        // Test data
-        FridgeItem fridgeItem = new FridgeItem();
-        fridgeItem.setItemName("bread");
-        fridgeItem.setExpirationDate("2020-1-1");
-        viewModel.insert(fridgeItem);
-
-        fridgeItem = new FridgeItem();
-        fridgeItem.setItemName("milk");
-        fridgeItem.setExpirationDate("2020-1-2");
-        viewModel.insert(fridgeItem);
-
-        fridgeItem = new FridgeItem();
-        fridgeItem.setItemName("eggs");
-        fridgeItem.setExpirationDate("2020-1-2");
-        viewModel.insert(fridgeItem);
+//         Test data
+//        FridgeItem fridgeItem = new FridgeItem();
+//        fridgeItem.setItemName("bread");
+//        fridgeItem.setExpirationDate("2020-1-1");
+//        viewModel.insert(fridgeItem);
+//
+//        fridgeItem = new FridgeItem();
+//        fridgeItem.setItemName("milk");
+//        fridgeItem.setExpirationDate("2020-1-2");
+//        viewModel.insert(fridgeItem);
+//
+//        fridgeItem = new FridgeItem();
+//        fridgeItem.setItemName("eggs");
+//        fridgeItem.setExpirationDate("2020-1-2");
+//        viewModel.insert(fridgeItem);
 
         viewModel.getAll().observe(this, this::onGetAll);
     }
@@ -71,7 +79,8 @@ public class Storage extends AppCompatActivity {
 
             TextView productName = new TextView(this);
             productName.setText(fridgeItem.getItemName());
-            productName.setTextSize(20);
+            productName.setTextSize(18);
+            productName.setGravity(Gravity.CENTER);
 
             TextView expirationDate = new TextView(this);
             expirationDate.setText(fridgeItem.getExpirationDate());
@@ -82,10 +91,18 @@ public class Storage extends AppCompatActivity {
             button.setOnClickListener(v -> {
                 viewModel.delete(fridgeItem);
             });
-            row.addView(productName);
+            button.setWidth(10);
             row.addView(expirationDate);
             row.addView(button);
 
+            TableRow productNameRow = new TableRow(this);
+            productNameRow.addView(productName);
+
+
+            tableLayout.addView(productNameRow);
+            TableRow.LayoutParams params = (TableRow.LayoutParams) productName.getLayoutParams();
+            params.span = 2;
+            productName.setLayoutParams(params);
             tableLayout.addView(row);
         }
     }

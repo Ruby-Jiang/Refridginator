@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.refridginator.app"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -41,6 +41,8 @@ dependencies {
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:2.2.0"
+
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
@@ -68,5 +70,6 @@ dependencies {
     annotationProcessor 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
 
     //From zxing-android-embedded version 4.x, only Android SDK 24+ is supported by default, and androidx is required.
-    implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
+    implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
 }
