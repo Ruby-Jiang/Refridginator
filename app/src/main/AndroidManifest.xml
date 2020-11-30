@@ -21,14 +21,7 @@
             android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden"/>
-        <activity android:name=".ui.OpenFridge"
-            android:label="Open Sesame"
-            android:parentActivityName=".ui.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.refridginator.app.ui.MainActivity"
-            />
-        </activity>
+
         <activity
             android:name=".ui.Storage"
             android:label="What is in your fridge"
@@ -40,6 +33,7 @@
         <activity
             android:name=".ui.RecipeRecs"
             android:label="What to make"
+            android:usesCleartextTraffic="true"
             android:parentActivityName=".ui.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
