@@ -46,7 +46,7 @@ public class Storage extends AppCompatActivity {
 //        viewModel.insert(fridgeItem);
 //
 //        fridgeItem = new FridgeItem();
-//        fridgeItem.setItemName("milk");
+//        fridgeItem.setItemName("milk dskdjhfsdkfhskdjfhskfhskdjfskdfhskdjfhkjsdfhksdhf");
 //        fridgeItem.setExpirationDate("2020-1-2");
 //        viewModel.insert(fridgeItem);
 //
@@ -67,10 +67,11 @@ public class Storage extends AppCompatActivity {
 
         for (FridgeItem fridgeItem : fridgeItems) { // add rows to table
             TableRow row = new TableRow(this);
+            row.setBackgroundResource(R.drawable.row_border);
             //this code sets the parameters for each table row as they are generated
             //it provides extra spacing between the rows for better readability
             TableLayout.LayoutParams tableRowParams= new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT,TableLayout.LayoutParams.WRAP_CONTENT);
-            int leftMargin=20;
+            int leftMargin=15;
             int topMargin = 1;
             int bottonMargin = 30;
             int rightMargin=15;
@@ -79,11 +80,11 @@ public class Storage extends AppCompatActivity {
 
             TextView productName = new TextView(this);
             productName.setText(fridgeItem.getItemName());
-            productName.setTextSize(18);
-            productName.setGravity(Gravity.CENTER);
+            productName.setTextSize(25);
+//            productName.setGravity(Gravity.CENTER);
 
             TextView expirationDate = new TextView(this);
-            expirationDate.setText(fridgeItem.getExpirationDate());
+            expirationDate.setText("  " + fridgeItem.getExpirationDate());
             expirationDate.setTextSize(20);
 
             Button button = new Button(this);
@@ -91,7 +92,7 @@ public class Storage extends AppCompatActivity {
             button.setOnClickListener(v -> {
                 viewModel.delete(fridgeItem);
             });
-            button.setWidth(10);
+            button.setWidth(100);
             row.addView(expirationDate);
             row.addView(button);
 
