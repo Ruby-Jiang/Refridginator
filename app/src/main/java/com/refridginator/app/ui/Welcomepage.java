@@ -25,7 +25,7 @@ public class Welcomepage extends AppCompatActivity {
 //        actionBar.hide();
 
         Timer timer = new Timer();
-        timer.schedule(Timertask1, 1500);
+        timer.schedule(Timertask1, 2000);
     }
         TimerTask Timertask1 = new TimerTask() {
             @Override
