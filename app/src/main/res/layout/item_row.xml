@@ -13,8 +13,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="5dp"
-        android:background="#8BC34A"
-        app:cardBackgroundColor="#8BC34A"
+        android:background="#00bfa5"
+        app:cardBackgroundColor="#00bfa5"
         app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp">
+            android:layout_marginEnd="16dp"
+            android:background="#00bfa5">
 
             <ImageView
                 android:id="@+id/delete_button"
@@ -46,9 +47,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="17dp"
                 android:layout_marginEnd="252dp"
-                android:text=""
-                android:hint="Item here."
                 android:background="@null"
+                android:hint="Item here."
+                android:text=""
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/delete_button"

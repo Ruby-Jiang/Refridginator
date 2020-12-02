@@ -64,6 +64,9 @@ public class AddGrocery extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("spitems", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
+        for (Item item: items){
+            if (item.getName() == ""){items.remove(item);}
+        }
         Gson gson = new Gson();
         String json = gson.toJson(items);
         editor.putString("items",json);
