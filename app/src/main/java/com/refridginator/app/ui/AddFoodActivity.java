@@ -186,6 +186,7 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        month = month + 1;
         String date = year + "-" + month + "-" + dayOfMonth;
         TextView expirationDateSet = findViewById(R.id.plain_text_input1);
         expirationDateSet.setText(date);
