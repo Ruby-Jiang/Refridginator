@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.room.util.TableInfo;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.Gravity;
@@ -84,15 +85,15 @@ public class Storage extends AppCompatActivity {
 //            productName.setGravity(Gravity.CENTER);
 
             TextView expirationDate = new TextView(this);
-            expirationDate.setText("  " + fridgeItem.getExpirationDate());
+            expirationDate.setText(" " + fridgeItem.getExpirationDate());
             expirationDate.setTextSize(20);
 
             Button button = new Button(this);
-            button.setText("Remove Food");
+            button.setText("Remove");
             button.setOnClickListener(v -> {
                 viewModel.delete(fridgeItem);
             });
-            button.setWidth(100);
+            button.setWidth(80);
             row.addView(expirationDate);
             row.addView(button);
 

@@ -165,7 +165,7 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
                 dialog.show();
             }
             else{
-                Toast.makeText(this,"No Results", Toast.LENGTH_LONG).show();
+//                Toast.makeText(this,"No Results", Toast.LENGTH_LONG).show();
             }
         }else{
             super.onActivityResult(requestCode, resultCode, data);

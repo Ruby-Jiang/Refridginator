@@ -52,6 +52,7 @@ public class GrolistAdapter extends RecyclerView.Adapter<GrolistAdapter.ItemHold
     public interface BtnOnClickListerner{
         void onDeleteClick(int postion);
         void onAddQuantityClick(int position);
+        void onMinusQuantityClick(int position);
     }
 
     //ViewHolder
@@ -107,6 +108,7 @@ public class GrolistAdapter extends RecyclerView.Adapter<GrolistAdapter.ItemHold
         TextView quantity;
         ImageView deletebutton;
         ImageView addquantity;
+        ImageView minusbtn;
         TextView x;
 
         public ItemHolder(@NonNull View itemView, final BtnOnClickListerner listerner) {
@@ -116,6 +118,7 @@ public class GrolistAdapter extends RecyclerView.Adapter<GrolistAdapter.ItemHold
             this.quantity = itemView.findViewById(R.id.tv_quantity);
             this.deletebutton = itemView.findViewById(R.id.delete_button);
             this.addquantity = itemView.findViewById(R.id.btn_add_quantity);
+            this.minusbtn = itemView.findViewById(R.id.btn_minus);
             this.x = itemView.findViewById(R.id.tv_x);
 
             deletebutton.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +134,14 @@ public class GrolistAdapter extends RecyclerView.Adapter<GrolistAdapter.ItemHold
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     listerner.onAddQuantityClick(position);
+                }
+            });
+
+            minusbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    listerner.onMinusQuantityClick(position);
                 }
             });
         }
