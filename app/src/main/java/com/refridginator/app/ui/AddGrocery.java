@@ -1,23 +1,10 @@
 package com.refridginator.app.ui;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Parcelable;
-import android.os.PersistableBundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -25,14 +12,17 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.refridginator.app.R;
 import com.refridginator.app.data.Item;
-
-import org.w3c.dom.Text;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -197,34 +187,6 @@ public class AddGrocery extends AppCompatActivity {
         get_set_ItemQuantity();
     }
 
-    //    protected void onSaveInstanceState(Bundle outstate) {
-//        super.onSaveInstanceState(outstate);
-//        Log.d(TAG, "onSaveInstanceState: called");
-//
-//        // Save list state
-////        mListState = recyclerView.getLayoutManager().onSaveInstanceState();
-////        outstate.putParcelable("rvstate", mListState);
-//
-//        outstate.putParcelableArrayList("Items", (ArrayList<? extends Parcelable>) items);
-//    }
-
-//    protected void onRestoreInstanceState(Bundle state) {
-//        super.onRestoreInstanceState(state);
-//        Log.d(TAG, "onRestoreInstanceState: called");
-//        // Retrieve list state and list/item positions
-//        if(state != null)
-//            mListState = state.getParcelable("rvstate");
-//        recyclerView.getLayoutManager().onRestoreInstanceState(mListState);
-//    }
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//
-//        if (mListState != null) {
-//            recyclerView.getLayoutManager().onRestoreInstanceState(mListState);
-//        }
-//    }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

@@ -1,28 +1,17 @@
 package com.refridginator.app.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.room.util.TableInfo;
-
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.refridginator.app.R;
 import com.refridginator.app.data.FridgeItem;
 import com.refridginator.app.viewmodels.StorageViewModel;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -39,23 +28,6 @@ public class Storage extends AppCompatActivity {
         setContentView(R.layout.activity_storage);
         viewModel = new ViewModelProvider(this).get(StorageViewModel.class);
         tableLayout = findViewById(R.id.storageTable);
-
-//         Test data
-//        FridgeItem fridgeItem = new FridgeItem();
-//        fridgeItem.setItemName("bread");
-//        fridgeItem.setExpirationDate("2020-1-1");
-//        viewModel.insert(fridgeItem);
-//
-//        fridgeItem = new FridgeItem();
-//        fridgeItem.setItemName("milk dskdjhfsdkfhskdjfhskfhskdjfskdfhskdjfhkjsdfhksdhf");
-//        fridgeItem.setExpirationDate("2020-1-2");
-//        viewModel.insert(fridgeItem);
-//
-//        fridgeItem = new FridgeItem();
-//        fridgeItem.setItemName("eggs");
-//        fridgeItem.setExpirationDate("2020-1-2");
-//        viewModel.insert(fridgeItem);
-
         viewModel.getAll().observe(this, this::onGetAll);
     }
 
